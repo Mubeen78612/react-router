@@ -5,36 +5,30 @@ import seven from '../Images/seven.jpg'
 import eight from '../Images/eight.jpg'
 import ten from '../Images/ten.jpg'
 
-function About() {
+function About(props) {
   return (
     <>
-    <section className='w-screen  h-auto'>
-      <h1 className='pt-7 text-4xl'> New PRODUCT</h1>
-      <div className='flex space-x-8 justify-around'>
-        <div> 
-          <img className='w-[400px] h-[400px] hover:scale-75' src={five}/>
-        </div>
-        <div>
-          <img className='w-[400px] h-[400px] hover:scale-75' src={six}/>
-           </div>
+     <section className="">
+    
+      <div className="flex flex-wrap">
+        {props?.data?.map((item, index) => {
+          return (
+            <div className="bg-red-400 mx-4 my-4" key={index}>
+              <img
+                className="w-[300px] h-[300px] rounded-full hover:scale-75 "
+                src={item?.thumbnail}
+              />
+              <h2 className=" text-3xl">{item?.title}</h2>
+              <h3> {item?.category}</h3>
+              <h4> {item?.price}</h4>
+              
+              <h4> {item?.rating}</h4>
+              <h5> {item?.stock}</h5>
+            </div>
+          );
+        })}
       </div>
-
     </section>
-    <main-section className=''>
-    <h1 className='text-4xl'> Similar PRODUCT</h1>
-    <div className='flex justify-around'>
-      <div>
-        <img className='w-[220px] h-[220px] hover:scale-75' src={seven}/>
-      </div>
-      <div>
-        <img className='w-[220px] h-[220px] hover:scale-75' src={eight}/>
-      </div>
-      <div>
-        <img className='w-[220px] h-[220px] hover:scale-75' src={ten}/>
-      </div>
-    </div>
-
-    </main-section>
     </>
   )
 }
